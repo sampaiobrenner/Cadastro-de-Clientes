@@ -55,6 +55,7 @@
             this.buttonExluirCliente.TabIndex = 0;
             this.buttonExluirCliente.Text = "Excluir";
             this.buttonExluirCliente.UseVisualStyleBackColor = true;
+            this.buttonExluirCliente.Click += new System.EventHandler(this.buttonExluirCliente_Click);
             // 
             // buttonFechar
             // 
@@ -64,6 +65,7 @@
             this.buttonFechar.TabIndex = 1;
             this.buttonFechar.Text = "Fechar";
             this.buttonFechar.UseVisualStyleBackColor = true;
+            this.buttonFechar.Click += new System.EventHandler(this.buttonFechar_Click);
             // 
             // FormListagemClientes
             // 

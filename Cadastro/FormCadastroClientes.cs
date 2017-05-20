@@ -130,8 +130,21 @@ namespace Cadastro
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormListagemClientes listagem = new FormListagemClientes();
-            listagem.ShowDialog();
+            try
+            {
+                //Esconda o formulario atual
+                this.Hide();
+                // Crie apenas o segundo form
+                FormListagemClientes listagem = new FormListagemClientes();
+                //Mostre o segundo form
+                listagem.ShowDialog();
+            }
+            finally
+            {
+                // ao fechar, mostre novamente o inicial, ou feche this.Close();
+                this.Show();
+            }
+            
         }
     }
 }

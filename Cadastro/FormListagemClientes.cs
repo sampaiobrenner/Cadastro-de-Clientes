@@ -14,62 +14,66 @@ namespace Cadastro
     {
 
         private ClienteDAO dao;
+        private ListView listagem;
         public FormListagemClientes()
         {
             InitializeComponent();
             dao = new ClienteDAO();
+            listagem = new ListView();
+            definirLista();
             carregaClientes();
         }
 
-        public void carregaClientes()
+        public void definirLista()
         {
-
-            // Create a new ListView control.
-
-            ListView listView1 = new ListView();
-            listView1.Bounds = new Rectangle(new Point(10, 10), new Size(580, 350));
+            listagem.Bounds = new Rectangle(new Point(10, 10), new Size(580, 350));
 
             // Set the view to show details.
-            listView1.View = View.Details;
+            listagem.View = View.Details;
             // Allow the user to edit item text.
-            listView1.LabelEdit = true;
+            listagem.LabelEdit = false;
             // Allow the user to rearrange columns.
-            listView1.AllowColumnReorder = true;
+            listagem.AllowColumnReorder = true;
             // Display check boxes.
-            listView1.CheckBoxes = true;
+            listagem.CheckBoxes = false;
             // Select the item and subitems when selection is made.
-            listView1.FullRowSelect = true;
+            listagem.FullRowSelect = true;
             // Display grid lines.
-            listView1.GridLines = true;
+            listagem.GridLines = true;
             // Sort the items in the list in ascending order.
-            listView1.Sorting = SortOrder.Ascending;
-
+            listagem.Sorting = SortOrder.Ascending;
+        }
+        
+        public void carregaClientes()
+        {
             try
             {
                 IList<Cliente> resultado = dao.obterClientes();
                 foreach (var c in resultado)
                 {
                     // Create three items and three sets of subitems for each item.
-                    ListViewItem item1 = new ListViewItem("", 0);
-                    item1.Checked = false;
-                    item1.SubItems.Add(c.nome);
-                    item1.SubItems.Add(c.tipoPessoa);
-                    item1.SubItems.Add(Convert.ToString(c.dataNascimento));
+                    ListViewItem item = new ListViewItem("", 0);
+                    item.Checked = false;
+                    item.SubItems.Add(Convert.ToString(c.id));
+                    item.SubItems.Add(c.nome);
+                    item.SubItems.Add(c.tipoPessoa);
+                    item.SubItems.Add(c.dataNascimento.ToString("dd/MM/yyyy"));
 
                     //Add the items to the ListView.
-                    listView1.Items.AddRange(new ListViewItem[] { item1 });
+                    listagem.Items.AddRange(new ListViewItem[] { item });
                 }
 
                 // Create columns for the items and subitems.
                 // Width of -2 indicates auto-size.
-                listView1.Columns.Add("", -2, HorizontalAlignment.Center);
-                listView1.Columns.Add("Nome", -2, HorizontalAlignment.Left);
-                listView1.Columns.Add("Tipo Pessoa", -2, HorizontalAlignment.Left);
-                listView1.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("", -2, HorizontalAlignment.Center);
+                listagem.Columns.Add("ID", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Nome", 250, HorizontalAlignment.Left);
+                listagem.Columns.Add("Tipo Pessoa", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
 
 
                 // Add the ListView to the control collection.
-                this.Controls.Add(listView1);
+                this.Controls.Add(listagem);
 
             }
             catch (Exception ex)
@@ -79,5 +83,27 @@ namespace Cadastro
 
         }
 
+        private void buttonFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonExluirCliente_Click(object sender, EventArgs e)
+        {
+            try
+                {
+                    int id = Convert.ToInt32(listagem.SelectedItems[0].SubItems[1].Text);
+                    dao.excluirCliente(id);
+                    listagem.Items.RemoveAt(listagem.SelectedIndices[0]);
+
+                MessageBox.Show("Registro excluido com sucesso!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro: " + ex);
+                }
+
+            
+        }
     }
 }

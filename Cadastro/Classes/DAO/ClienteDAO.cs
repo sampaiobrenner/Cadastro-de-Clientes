@@ -22,9 +22,11 @@ namespace Cadastro
             contexto.SaveChanges();
         }
 
-        public void excluirCliente (Cliente cliente)
+        public void excluirCliente (int idCliente)
         {
-            contexto.Clientes.Remove(cliente);
+            IList<Cliente> cliente = buscarClientePorId(idCliente);
+            Cliente obj = cliente.First();
+            contexto.Clientes.Remove(obj);
             contexto.SaveChanges();
         }
 
@@ -34,10 +36,13 @@ namespace Cadastro
             contexto.SaveChanges();
         }
 
-        public Cliente buscarClientePorId (int id)
+        public IList<Cliente> buscarClientePorId (int id)
         {
-            // retorna o primeiro id encontrado
-            return contexto.Clientes.FirstOrDefault(c => c.id == id);
+            var busca = from c in contexto.Clientes
+                        where c.id == id
+                        select c;
+            IList<Cliente> resultado = busca.ToList();
+            return resultado;
         }
 
         public IList<Cliente> obterClientes()
