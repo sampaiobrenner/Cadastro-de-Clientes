@@ -23,26 +23,11 @@ namespace Cadastro
 
         public void carregaClientes()
         {
-            /*try
-            {
-                IList<Cliente> resultado = dao.obterClientes();
-                foreach (var c in resultado)
-                {
-                    ListViewItem i = new ListViewItem(c.nome);
-                    i.SubItems.Add(c.numero);
-                    i.SubItems.Add("column3");
-                    listViewClientes.Items.Add(i);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocorreu um erro: " + ex);
-            }
-            */
+
             // Create a new ListView control.
 
             ListView listView1 = new ListView();
-            listView1.Bounds = new Rectangle(new Point(10, 10), new Size(500, 400));
+            listView1.Bounds = new Rectangle(new Point(10, 10), new Size(580, 350));
 
             // Set the view to show details.
             listView1.View = View.Details;
@@ -59,52 +44,40 @@ namespace Cadastro
             // Sort the items in the list in ascending order.
             listView1.Sorting = SortOrder.Ascending;
 
-            // Create three items and three sets of subitems for each item.
-            ListViewItem item1 = new ListViewItem("item1", 0);
-            // Place a check mark next to the item.
-            item1.Checked = true;
-            item1.SubItems.Add("1");
-            item1.SubItems.Add("2");
-            item1.SubItems.Add("3");
-            ListViewItem item2 = new ListViewItem("item2", 1);
-            item2.SubItems.Add("4");
-            item2.SubItems.Add("5");
-            item2.SubItems.Add("6");
-            ListViewItem item3 = new ListViewItem("item3", 0);
-            // Place a check mark next to the item.
-            item3.Checked = true;
-            item3.SubItems.Add("7");
-            item3.SubItems.Add("8");
-            item3.SubItems.Add("9");
+            try
+            {
+                IList<Cliente> resultado = dao.obterClientes();
+                foreach (var c in resultado)
+                {
+                    // Create three items and three sets of subitems for each item.
+                    ListViewItem item1 = new ListViewItem("", 0);
+                    item1.Checked = false;
+                    item1.SubItems.Add(c.nome);
+                    item1.SubItems.Add(c.tipoPessoa);
+                    item1.SubItems.Add(Convert.ToString(c.dataNascimento));
 
-            // Create columns for the items and subitems.
-            // Width of -2 indicates auto-size.
-            listView1.Columns.Add("Nome", -2, HorizontalAlignment.Left);
-            listView1.Columns.Add("Telefone", -2, HorizontalAlignment.Left);
-            listView1.Columns.Add("Cidade", -2, HorizontalAlignment.Left);
-            listView1.Columns.Add("Estado", -2, HorizontalAlignment.Center);
+                    //Add the items to the ListView.
+                    listView1.Items.AddRange(new ListViewItem[] { item1 });
+                }
 
-            //Add the items to the ListView.
-            listView1.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
+                // Create columns for the items and subitems.
+                // Width of -2 indicates auto-size.
+                listView1.Columns.Add("", -2, HorizontalAlignment.Center);
+                listView1.Columns.Add("Nome", -2, HorizontalAlignment.Left);
+                listView1.Columns.Add("Tipo Pessoa", -2, HorizontalAlignment.Left);
+                listView1.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
 
-            // Create two ImageList objects.
-            ImageList imageListSmall = new ImageList();
-            ImageList imageListLarge = new ImageList();
 
-            // Initialize the ImageList objects with bitmaps.
-            //imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage1.bmp"));
-            //imageListSmall.Images.Add(Bitmap.FromFile("C:\\MySmallImage2.bmp"));
-            //imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage1.bmp"));
-            //imageListLarge.Images.Add(Bitmap.FromFile("C:\\MyLargeImage2.bmp"));
+                // Add the ListView to the control collection.
+                this.Controls.Add(listView1);
 
-            //Assign the ImageList objects to the ListView.
-            listView1.LargeImageList = imageListLarge;
-            listView1.SmallImageList = imageListSmall;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex);
+            }
 
-            // Add the ListView to the control collection.
-            this.Controls.Add(listView1);
         }
-
 
     }
 }

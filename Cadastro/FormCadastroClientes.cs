@@ -53,7 +53,7 @@ namespace Cadastro
                         rgIe = txtBoxRG_IE.Text,
                         cpfCnpj = txtBoxCPF_CNPJ.Text,
                         email = txtBoxEmail.Text,
-                        cidadeid = 1,
+                        cidadeid = 3,
                         telefonePrincipal = txtBoxTelefonePrincipal.Text,
                         telefoneSecundario = txtBoxTelefoneSecundario.Text,
                         cep = txtBoxCEP.Text,
