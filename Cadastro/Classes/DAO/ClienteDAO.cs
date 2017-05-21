@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,7 @@ namespace Cadastro
 
         public IList<Cliente> obterClientes()
         {
-            var busca = from c in contexto.Clientes
+            var busca = from c in contexto.Clientes.Include(c => c.Cidade)
                         select c;
             IList<Cliente> resultado = busca.ToList();
             return resultado;

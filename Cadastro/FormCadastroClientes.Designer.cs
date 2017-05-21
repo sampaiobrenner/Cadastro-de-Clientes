@@ -46,6 +46,8 @@
             this.txtBoxEmail = new System.Windows.Forms.MaskedTextBox();
             this.txtBoxCPF_CNPJ = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtBoxBairro = new System.Windows.Forms.TextBox();
+            this.labelBairro = new System.Windows.Forms.Label();
             this.comboBoxCidades = new System.Windows.Forms.ComboBox();
             this.btnCadastrarCliente = new System.Windows.Forms.Button();
             this.txtBoxCEP = new System.Windows.Forms.MaskedTextBox();
@@ -63,8 +65,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.listagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelBairro = new System.Windows.Forms.Label();
-            this.txtBoxBairro = new System.Windows.Forms.TextBox();
             this.panelPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -220,6 +220,7 @@
             this.txtBoxTelefoneSecundario.Name = "txtBoxTelefoneSecundario";
             this.txtBoxTelefoneSecundario.Size = new System.Drawing.Size(100, 20);
             this.txtBoxTelefoneSecundario.TabIndex = 7;
+            this.txtBoxTelefoneSecundario.Text = "5381325477";
             // 
             // txtBoxTelefonePrincipal
             // 
@@ -228,6 +229,7 @@
             this.txtBoxTelefonePrincipal.Name = "txtBoxTelefonePrincipal";
             this.txtBoxTelefonePrincipal.Size = new System.Drawing.Size(100, 20);
             this.txtBoxTelefonePrincipal.TabIndex = 6;
+            this.txtBoxTelefonePrincipal.Text = "5384033566";
             // 
             // txtBoxEmail
             // 
@@ -271,10 +273,27 @@
             this.panel1.Size = new System.Drawing.Size(575, 174);
             this.panel1.TabIndex = 1;
             // 
+            // txtBoxBairro
+            // 
+            this.txtBoxBairro.Location = new System.Drawing.Point(69, 107);
+            this.txtBoxBairro.Name = "txtBoxBairro";
+            this.txtBoxBairro.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxBairro.TabIndex = 8;
+            this.txtBoxBairro.Text = "Areal";
+            // 
+            // labelBairro
+            // 
+            this.labelBairro.AutoSize = true;
+            this.labelBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBairro.Location = new System.Drawing.Point(18, 110);
+            this.labelBairro.Name = "labelBairro";
+            this.labelBairro.Size = new System.Drawing.Size(40, 13);
+            this.labelBairro.TabIndex = 7;
+            this.labelBairro.Text = "Bairro";
+            // 
             // comboBoxCidades
             // 
             this.comboBoxCidades.DisplayMember = "NomeCompleto";
-            this.comboBoxCidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCidades.FormattingEnabled = true;
             this.comboBoxCidades.Location = new System.Drawing.Point(69, 24);
             this.comboBoxCidades.Name = "comboBoxCidades";
@@ -431,24 +450,6 @@
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
-            // 
-            // labelBairro
-            // 
-            this.labelBairro.AutoSize = true;
-            this.labelBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBairro.Location = new System.Drawing.Point(18, 110);
-            this.labelBairro.Name = "labelBairro";
-            this.labelBairro.Size = new System.Drawing.Size(40, 13);
-            this.labelBairro.TabIndex = 7;
-            this.labelBairro.Text = "Bairro";
-            // 
-            // txtBoxBairro
-            // 
-            this.txtBoxBairro.Location = new System.Drawing.Point(69, 107);
-            this.txtBoxBairro.Name = "txtBoxBairro";
-            this.txtBoxBairro.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxBairro.TabIndex = 8;
-            this.txtBoxBairro.Text = "Areal";
             // 
             // FormCadastroClientes
             // 

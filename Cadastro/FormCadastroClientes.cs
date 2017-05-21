@@ -83,6 +83,13 @@ namespace Cadastro
                 txtBoxNome.Focus();
                 return false;
             } else
+             if (comboBoxCidades.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Campo 'Cidade' de preenchimento obrigatório!");
+                comboBoxCidades.Focus();
+                return false;
+            }
+            else
             if (Regex.Replace(txtBoxDataNascimento.Text, "  /  /", "").Equals("") )
             {
                 MessageBox.Show("Campo 'Data de Nascimento' de preenchimento obrigatório!");

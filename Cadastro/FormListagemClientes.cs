@@ -29,23 +29,40 @@ namespace Cadastro
                 IList<Cliente> resultado = dao.obterClientes();
                 foreach (var c in resultado)
                 {
-                    ListViewItem item = new ListViewItem("", 0);
-                    item.Checked = false;
-                    item.SubItems.Add(Convert.ToString(c.Id));
-                    item.SubItems.Add(c.Nome);
+                    ListViewItem item = new ListViewItem(Convert.ToString(c.Id));
                     item.SubItems.Add(c.TipoPessoa);
-                    item.SubItems.Add(c.Email);
+                    item.SubItems.Add(c.Nome);
                     item.SubItems.Add(c.DataNascimento.ToString("dd/MM/yyyy"));
+                    item.SubItems.Add(c.RgIe);
+                    item.SubItems.Add(c.CpfCnpj);
+                    item.SubItems.Add(c.Email);
+                    item.SubItems.Add(c.TelefonePrincipal);
+                    item.SubItems.Add(c.TelefoneSecundario);
+                    item.SubItems.Add(c.Cidade.Nome);
+                    item.SubItems.Add(c.Cep);
+                    item.SubItems.Add(c.Logradouro);
+                    item.SubItems.Add(c.Numero);
+                    item.SubItems.Add(c.Complemento);
+                    item.SubItems.Add(c.Bairro);
 
                     listagem.Items.AddRange(new ListViewItem[] { item });
                 }
 
-                listagem.Columns.Add("", -2, HorizontalAlignment.Center);
-                listagem.Columns.Add("ID", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Nome", 250, HorizontalAlignment.Left);
-                listagem.Columns.Add("Tipo Pessoa", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("E-mail", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Id", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Tipo de Pessoa", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Nome Completo", 200, HorizontalAlignment.Left);
                 listagem.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("RG/IE", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("CPF/CNPJ", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("E-mail", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Telefone Principal", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Telefone Secundário", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Cidade", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("CEP", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Logradouro", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Número", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Complemento", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("Bairro", -2, HorizontalAlignment.Left);
 
                 this.Controls.Add(listagem);
 
@@ -64,15 +81,21 @@ namespace Cadastro
 
         private void buttonExluirCliente_Click(object sender, EventArgs e)
         {
-            int contador = listagem.Items.Count;
-            if (contador > 0) {
+            if (listagem.Items.Count == 0)
+            {
+                MessageBox.Show("Você não possui clientes cadastrados!");
+            } else if (listagem.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Você deve selecionar um registro para excluir!");
+            } else {
+
                 DialogResult dr = MessageBox.Show("Você tem certeza que deseja excluir o registro selecionado?", "Confirmação: Excluir cliente?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                 if (dr == DialogResult.Yes)
                 {
                     try
                     {
-                        int id = Convert.ToInt32(listagem.SelectedItems[0].SubItems[1].Text);
+                        int id = Convert.ToInt32(listagem.SelectedItems[0].SubItems[0].Text);
                         dao.excluirCliente(id);
                         listagem.Items.RemoveAt(listagem.SelectedIndices[0]);
 
@@ -87,13 +110,8 @@ namespace Cadastro
                 {
 
                 }
-            } else
-            {
-                MessageBox.Show("Você não possui clientes cadastrados!");
-            }
-           
-           
-            
+            } 
+  
         }
     }
 }
