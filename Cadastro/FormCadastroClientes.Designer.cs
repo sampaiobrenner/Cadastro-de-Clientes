@@ -360,6 +360,7 @@
             // 
             this.txtBoxUf.Location = new System.Drawing.Point(319, 25);
             this.txtBoxUf.Name = "txtBoxUf";
+            this.txtBoxUf.ReadOnly = true;
             this.txtBoxUf.Size = new System.Drawing.Size(39, 20);
             this.txtBoxUf.TabIndex = 1;
             this.txtBoxUf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

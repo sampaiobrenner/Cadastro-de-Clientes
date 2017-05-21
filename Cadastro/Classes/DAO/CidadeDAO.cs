@@ -20,7 +20,6 @@ namespace Cadastro
         public IList<Cidade> obterCidades()
         {
             var busca = (from c in contexto.Cidades.Include(e => e.estado)
-                        //join e in contexto.Estados on c.estadoid equals e.id
                         orderby c.nome
                         select c);
             IList<Cidade> resultado = busca.ToList();

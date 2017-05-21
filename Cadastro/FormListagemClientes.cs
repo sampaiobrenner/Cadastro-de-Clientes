@@ -14,36 +14,14 @@ namespace Cadastro
     {
 
         private ClienteDAO dao;
-        private ListView listagem;
+
         public FormListagemClientes()
         {
             InitializeComponent();
             dao = new ClienteDAO();
-            listagem = new ListView();
-            definirLista();
             carregaClientes();
         }
-
-        public void definirLista()
-        {
-            listagem.Bounds = new Rectangle(new Point(10, 10), new Size(580, 350));
-
-            // Set the view to show details.
-            listagem.View = View.Details;
-            // Allow the user to edit item text.
-            listagem.LabelEdit = false;
-            // Allow the user to rearrange columns.
-            listagem.AllowColumnReorder = true;
-            // Display check boxes.
-            listagem.CheckBoxes = false;
-            // Select the item and subitems when selection is made.
-            listagem.FullRowSelect = true;
-            // Display grid lines.
-            listagem.GridLines = true;
-            // Sort the items in the list in ascending order.
-            listagem.Sorting = SortOrder.Ascending;
-        }
-        
+      
         public void carregaClientes()
         {
             try
@@ -51,7 +29,6 @@ namespace Cadastro
                 IList<Cliente> resultado = dao.obterClientes();
                 foreach (var c in resultado)
                 {
-                    // Create three items and three sets of subitems for each item.
                     ListViewItem item = new ListViewItem("", 0);
                     item.Checked = false;
                     item.SubItems.Add(Convert.ToString(c.id));
@@ -60,12 +37,9 @@ namespace Cadastro
                     item.SubItems.Add(c.email);
                     item.SubItems.Add(c.dataNascimento.ToString("dd/MM/yyyy"));
 
-                    //Add the items to the ListView.
                     listagem.Items.AddRange(new ListViewItem[] { item });
                 }
 
-                // Create columns for the items and subitems.
-                // Width of -2 indicates auto-size.
                 listagem.Columns.Add("", -2, HorizontalAlignment.Center);
                 listagem.Columns.Add("ID", -2, HorizontalAlignment.Left);
                 listagem.Columns.Add("Nome", 250, HorizontalAlignment.Left);
@@ -73,8 +47,6 @@ namespace Cadastro
                 listagem.Columns.Add("E-mail", -2, HorizontalAlignment.Left);
                 listagem.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
 
-
-                // Add the ListView to the control collection.
                 this.Controls.Add(listagem);
 
             }

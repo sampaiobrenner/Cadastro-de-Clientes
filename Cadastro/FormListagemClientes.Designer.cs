@@ -33,6 +33,7 @@
             this.cadastroDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.buttonExluirCliente = new System.Windows.Forms.Button();
             this.buttonFechar = new System.Windows.Forms.Button();
+            this.listagem = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -67,11 +68,25 @@
             this.buttonFechar.UseVisualStyleBackColor = true;
             this.buttonFechar.Click += new System.EventHandler(this.buttonFechar_Click);
             // 
+            // listagem
+            // 
+            this.listagem.AllowColumnReorder = true;
+            this.listagem.FullRowSelect = true;
+            this.listagem.GridLines = true;
+            this.listagem.Location = new System.Drawing.Point(12, 29);
+            this.listagem.Name = "listagem";
+            this.listagem.Size = new System.Drawing.Size(580, 333);
+            this.listagem.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listagem.TabIndex = 2;
+            this.listagem.UseCompatibleStateImageBehavior = false;
+            this.listagem.View = System.Windows.Forms.View.Details;
+            // 
             // FormListagemClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 414);
+            this.Controls.Add(this.listagem);
             this.Controls.Add(this.buttonFechar);
             this.Controls.Add(this.buttonExluirCliente);
             this.MaximizeBox = false;
@@ -89,5 +104,6 @@
         private CadastroDataSet cadastroDataSet;
         private System.Windows.Forms.Button buttonExluirCliente;
         private System.Windows.Forms.Button buttonFechar;
+        private System.Windows.Forms.ListView listagem;
     }
 }
