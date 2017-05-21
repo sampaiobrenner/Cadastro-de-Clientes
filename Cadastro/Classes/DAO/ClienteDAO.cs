@@ -39,7 +39,7 @@ namespace Cadastro
         public IList<Cliente> buscarClientePorId (int id)
         {
             var busca = from c in contexto.Clientes
-                        where c.id == id
+                        where c.Id == id
                         select c;
             IList<Cliente> resultado = busca.ToList();
             return resultado;

@@ -31,11 +31,11 @@ namespace Cadastro
                 {
                     ListViewItem item = new ListViewItem("", 0);
                     item.Checked = false;
-                    item.SubItems.Add(Convert.ToString(c.id));
-                    item.SubItems.Add(c.nome);
-                    item.SubItems.Add(c.tipoPessoa);
-                    item.SubItems.Add(c.email);
-                    item.SubItems.Add(c.dataNascimento.ToString("dd/MM/yyyy"));
+                    item.SubItems.Add(Convert.ToString(c.Id));
+                    item.SubItems.Add(c.Nome);
+                    item.SubItems.Add(c.TipoPessoa);
+                    item.SubItems.Add(c.Email);
+                    item.SubItems.Add(c.DataNascimento.ToString("dd/MM/yyyy"));
 
                     listagem.Items.AddRange(new ListViewItem[] { item });
                 }

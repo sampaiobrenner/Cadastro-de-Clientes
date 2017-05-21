@@ -137,11 +137,12 @@
     </Compile>
     <Compile Include="Classes\DAO\CidadeDAO.cs" />
     <Compile Include="Classes\DAO\EstadoDAO.cs" />
+    <Compile Include="Classes\DTO\ItemDaComboBoxDeCidade.cs" />
     <Compile Include="EntidadeContext.cs" />
     <Compile Include="Classes\DAO\ClienteDAO.cs" />
-    <Compile Include="Classes\DTO\Cidade.cs" />
-    <Compile Include="Classes\DTO\Cliente.cs" />
-    <Compile Include="Classes\DTO\Estado.cs" />
+    <Compile Include="Classes\Entities\Cidade.cs" />
+    <Compile Include="Classes\Entities\Cliente.cs" />
+    <Compile Include="Classes\Entities\Estado.cs" />
     <Compile Include="FormCadastroClientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +166,10 @@
     <Compile Include="Migrations\20170520174344_3.cs" />
     <Compile Include="Migrations\20170520174344_3.designer.cs">
       <DependentUpon>20170520174344_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20170521224159_4.cs" />
+    <Compile Include="Migrations\20170521224159_4.designer.cs">
+      <DependentUpon>20170521224159_4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\EntidadeContextModelSnapshot.cs" />
     <Compile Include="Program.cs" />

@@ -8,9 +8,10 @@ using Cadastro;
 namespace Cadastro.Migrations
 {
     [DbContext(typeof(EntidadeContext))]
-    partial class EntidadeContextModelSnapshot : ModelSnapshot
+    [Migration("20170521224159_4")]
+    partial class _4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")

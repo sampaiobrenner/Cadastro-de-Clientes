@@ -19,9 +19,9 @@ namespace Cadastro
         public String obterEstado (int id)
         {
             
-            var busca = from e in contexto.Estados.Include(c => c.cidades)
-                        where e.id == id
-                        select e.sigla;
+            var busca = from c in contexto.Cidades.Include(e => e.Estado)
+                        where c.Id == id
+                        select c.Estado.Sigla;
 
             String sigla = busca.FirstOrDefault();
             return sigla;

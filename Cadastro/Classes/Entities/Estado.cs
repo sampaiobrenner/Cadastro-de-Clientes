@@ -8,9 +8,9 @@ namespace Cadastro
 {
     public class Estado
     {
-        public int id { get; set; }
-        public String nome { get; set; }
-        public String sigla { get; set; }
-        public virtual IList<Cidade> cidades { get; set; }
+        public int Id { get; set; }
+        public String Nome { get; set; }
+        public String Sigla { get; set; }
+        public virtual IList<Cidade> Cidades { get; set; }
     }
 }

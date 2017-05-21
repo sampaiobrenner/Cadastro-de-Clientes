@@ -50,5 +50,9 @@ namespace Cadastro
             return p_strPalavra.Trim();
         }
 
+        public static string NomeCompletoDaCidade(string nome, string uf)
+        {
+            return nome + " - " + uf;
+        }
     }
 }

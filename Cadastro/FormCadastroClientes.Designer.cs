@@ -63,6 +63,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.listagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelBairro = new System.Windows.Forms.Label();
+            this.txtBoxBairro = new System.Windows.Forms.TextBox();
             this.panelPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -84,7 +86,7 @@
             this.txtBoxNome.Name = "txtBoxNome";
             this.txtBoxNome.Size = new System.Drawing.Size(364, 20);
             this.txtBoxNome.TabIndex = 1;
-            this.txtBoxNome.Text = "Matheus";
+            this.txtBoxNome.Text = "Matheus Sampaio";
             // 
             // label3
             // 
@@ -248,6 +250,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.txtBoxBairro);
+            this.panel1.Controls.Add(this.labelBairro);
             this.panel1.Controls.Add(this.comboBoxCidades);
             this.panel1.Controls.Add(this.btnCadastrarCliente);
             this.panel1.Controls.Add(this.txtBoxCEP);
@@ -262,24 +266,27 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Location = new System.Drawing.Point(12, 235);
+            this.panel1.Location = new System.Drawing.Point(12, 228);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(575, 158);
+            this.panel1.Size = new System.Drawing.Size(575, 174);
             this.panel1.TabIndex = 1;
             // 
             // comboBoxCidades
             // 
+            this.comboBoxCidades.DisplayMember = "NomeCompleto";
+            this.comboBoxCidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCidades.FormattingEnabled = true;
             this.comboBoxCidades.Location = new System.Drawing.Point(69, 24);
             this.comboBoxCidades.Name = "comboBoxCidades";
             this.comboBoxCidades.Size = new System.Drawing.Size(173, 21);
             this.comboBoxCidades.TabIndex = 0;
+            this.comboBoxCidades.ValueMember = "id";
             this.comboBoxCidades.SelectedValueChanged += new System.EventHandler(this.comboBoxCidades_SelectedValueChanged);
             // 
             // btnCadastrarCliente
             // 
             this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarCliente.Location = new System.Drawing.Point(238, 120);
+            this.btnCadastrarCliente.Location = new System.Drawing.Point(235, 140);
             this.btnCadastrarCliente.Name = "btnCadastrarCliente";
             this.btnCadastrarCliente.Size = new System.Drawing.Size(110, 27);
             this.btnCadastrarCliente.TabIndex = 6;
@@ -294,6 +301,7 @@
             this.txtBoxCEP.Name = "txtBoxCEP";
             this.txtBoxCEP.Size = new System.Drawing.Size(100, 20);
             this.txtBoxCEP.TabIndex = 2;
+            this.txtBoxCEP.Text = "96085470";
             // 
             // txtBoxComplemento
             // 
@@ -301,6 +309,7 @@
             this.txtBoxComplemento.Name = "txtBoxComplemento";
             this.txtBoxComplemento.Size = new System.Drawing.Size(205, 20);
             this.txtBoxComplemento.TabIndex = 5;
+            this.txtBoxComplemento.Text = "Casa 107";
             // 
             // label15
             // 
@@ -318,6 +327,7 @@
             this.txtBoxNumero.Name = "txtBoxNumero";
             this.txtBoxNumero.Size = new System.Drawing.Size(100, 20);
             this.txtBoxNumero.TabIndex = 4;
+            this.txtBoxNumero.Text = "1755";
             // 
             // label14
             // 
@@ -335,6 +345,7 @@
             this.txtBoxLogradouro.Name = "txtBoxLogradouro";
             this.txtBoxLogradouro.Size = new System.Drawing.Size(205, 20);
             this.txtBoxLogradouro.TabIndex = 3;
+            this.txtBoxLogradouro.Text = "Av. Domingos de Almeida";
             // 
             // label13
             // 
@@ -421,6 +432,24 @@
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
+            // labelBairro
+            // 
+            this.labelBairro.AutoSize = true;
+            this.labelBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBairro.Location = new System.Drawing.Point(18, 110);
+            this.labelBairro.Name = "labelBairro";
+            this.labelBairro.Size = new System.Drawing.Size(40, 13);
+            this.labelBairro.TabIndex = 7;
+            this.labelBairro.Text = "Bairro";
+            // 
+            // txtBoxBairro
+            // 
+            this.txtBoxBairro.Location = new System.Drawing.Point(69, 107);
+            this.txtBoxBairro.Name = "txtBoxBairro";
+            this.txtBoxBairro.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxBairro.TabIndex = 8;
+            this.txtBoxBairro.Text = "Areal";
+            // 
             // FormCadastroClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,6 +511,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem listagemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtBoxBairro;
+        private System.Windows.Forms.Label labelBairro;
     }
 }
 

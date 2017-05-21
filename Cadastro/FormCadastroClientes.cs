@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cadastro.Classes.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,19 +48,20 @@ namespace Cadastro
                     ClienteDAO dao = new ClienteDAO();
                     Cliente cliente = new Cliente()
                     {
-                        tipoPessoa = comboBoxPessoa.Text,
-                        nome = txtBoxNome.Text,
-                        dataNascimento = Convert.ToDateTime(Regex.Replace(txtBoxDataNascimento.Text, "  /  /", "")),
-                        rgIe = txtBoxRG_IE.Text,
-                        cpfCnpj = txtBoxCPF_CNPJ.Text,
-                        email = txtBoxEmail.Text,
-                        cidadeid = 4,
-                        telefonePrincipal = txtBoxTelefonePrincipal.Text,
-                        telefoneSecundario = txtBoxTelefoneSecundario.Text,
-                        cep = txtBoxCEP.Text,
-                        logradouro = txtBoxLogradouro.Text,
-                        numero = txtBoxNumero.Text,
-                        complemento = txtBoxComplemento.Text
+                        TipoPessoa = comboBoxPessoa.Text,
+                        Nome = txtBoxNome.Text,
+                        DataNascimento = Convert.ToDateTime(Regex.Replace(txtBoxDataNascimento.Text, "  /  /", "")),
+                        RgIe = txtBoxRG_IE.Text,
+                        CpfCnpj = txtBoxCPF_CNPJ.Text,
+                        Email = txtBoxEmail.Text,
+                        CidadeId = Convert.ToInt32((comboBoxCidades.SelectedItem as ItemDaComboBoxDeCidade).Id),
+                        TelefonePrincipal = txtBoxTelefonePrincipal.Text,
+                        TelefoneSecundario = txtBoxTelefoneSecundario.Text,
+                        Cep = txtBoxCEP.Text,
+                        Logradouro = txtBoxLogradouro.Text,
+                        Numero = txtBoxNumero.Text,
+                        Complemento = txtBoxComplemento.Text,
+                        Bairro = txtBoxBairro.Text
                     };
                     dao.salvarCliente(cliente);
 
@@ -110,10 +112,10 @@ namespace Cadastro
             CidadeDAO cidades = new CidadeDAO();
             try
             {
-                IList<Cidade> resultado = cidades.obterCidades();
+                IList<ItemDaComboBoxDeCidade> resultado = cidades.obterCidades();
                 foreach (var c in resultado)
                 {
-                    comboBoxCidades.Items.Add(c.nome + " - " + c.estado.sigla);
+                    comboBoxCidades.Items.Add(c);
                 }
             } catch (Exception ex)
             {
@@ -126,7 +128,7 @@ namespace Cadastro
         private void comboBoxCidades_SelectedValueChanged(object sender, EventArgs e)
         {
 
-            int indice = comboBoxCidades.SelectedIndex + 1;
+            int indice = Convert.ToInt32((comboBoxCidades.SelectedItem as ItemDaComboBoxDeCidade).Id);
             EstadoDAO dao = new EstadoDAO();
             txtBoxUf.Text = dao.obterEstado(indice);
         }

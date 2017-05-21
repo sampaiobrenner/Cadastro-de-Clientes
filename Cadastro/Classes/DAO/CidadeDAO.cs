@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Entity;
+﻿using Cadastro.Classes.DTO;
+using Microsoft.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,25 @@ namespace Cadastro
         }
 
 
-        public IList<Cidade> obterCidades()
+        public IList<ItemDaComboBoxDeCidade> obterCidades()
         {
-            var busca = (from c in contexto.Cidades.Include(e => e.estado)
-                        orderby c.nome
-                        select c);
-            IList<Cidade> resultado = busca.ToList();
+            
+            var busca = (from c in contexto.Cidades.Include(e => e.Estado)
+                        orderby c.Nome
+                        select c).ToList();
+                        
+            IList<ItemDaComboBoxDeCidade> resultado = new List<ItemDaComboBoxDeCidade>();
+
+            busca.ForEach(c =>
+            {
+                resultado.Add(new ItemDaComboBoxDeCidade()
+                {
+                    Id = c.Id,
+                    Nome = c.Nome,
+                    SiglaDaUf = c.Estado.Sigla
+                });
+            });
+
             return resultado;
         }
 
