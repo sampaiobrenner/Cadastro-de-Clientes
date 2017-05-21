@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,19 +19,12 @@ namespace Cadastro
 
         public IList<Cidade> obterCidades()
         {
-            var busca = from c in contexto.Cidades
-                        select c;
+            var busca = (from c in contexto.Cidades.Include(e => e.estado)
+                        //join e in contexto.Estados on c.estadoid equals e.id
+                        orderby c.nome
+                        select c);
             IList<Cidade> resultado = busca.ToList();
             return resultado;
-        }
-
-        public String obterUf(int id)
-        {
-            var busca = from e in contexto.Estados
-                        join c in contexto.Cidades on e.id equals c.id
-                        where c.id == id
-                        select e.nome;
-            return busca.ToString();            
         }
 
     }

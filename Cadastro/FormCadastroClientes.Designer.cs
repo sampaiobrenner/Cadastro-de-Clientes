@@ -122,6 +122,7 @@
             this.txtBoxRG_IE.Name = "txtBoxRG_IE";
             this.txtBoxRG_IE.Size = new System.Drawing.Size(100, 20);
             this.txtBoxRG_IE.TabIndex = 3;
+            this.txtBoxRG_IE.Text = "3078970765";
             // 
             // label6
             // 
@@ -232,6 +233,7 @@
             this.txtBoxEmail.Name = "txtBoxEmail";
             this.txtBoxEmail.Size = new System.Drawing.Size(364, 20);
             this.txtBoxEmail.TabIndex = 5;
+            this.txtBoxEmail.Text = "sampaio.brenner@gmail.com";
             // 
             // txtBoxCPF_CNPJ
             // 
@@ -240,6 +242,7 @@
             this.txtBoxCPF_CNPJ.Name = "txtBoxCPF_CNPJ";
             this.txtBoxCPF_CNPJ.Size = new System.Drawing.Size(118, 20);
             this.txtBoxCPF_CNPJ.TabIndex = 4;
+            this.txtBoxCPF_CNPJ.Text = "02945989018";
             this.txtBoxCPF_CNPJ.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
             // 
             // panel1
@@ -359,6 +362,8 @@
             this.txtBoxUf.Name = "txtBoxUf";
             this.txtBoxUf.Size = new System.Drawing.Size(39, 20);
             this.txtBoxUf.TabIndex = 1;
+            this.txtBoxUf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtBoxUf.TextChanged += new System.EventHandler(this.comboBoxPessoa_SelectedValueChanged);
             // 
             // label11
             // 

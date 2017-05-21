@@ -57,6 +57,7 @@ namespace Cadastro
                     item.SubItems.Add(Convert.ToString(c.id));
                     item.SubItems.Add(c.nome);
                     item.SubItems.Add(c.tipoPessoa);
+                    item.SubItems.Add(c.email);
                     item.SubItems.Add(c.dataNascimento.ToString("dd/MM/yyyy"));
 
                     //Add the items to the ListView.
@@ -69,6 +70,7 @@ namespace Cadastro
                 listagem.Columns.Add("ID", -2, HorizontalAlignment.Left);
                 listagem.Columns.Add("Nome", 250, HorizontalAlignment.Left);
                 listagem.Columns.Add("Tipo Pessoa", -2, HorizontalAlignment.Left);
+                listagem.Columns.Add("E-mail", -2, HorizontalAlignment.Left);
                 listagem.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
 
 
@@ -90,19 +92,35 @@ namespace Cadastro
 
         private void buttonExluirCliente_Click(object sender, EventArgs e)
         {
-            try
-                {
-                    int id = Convert.ToInt32(listagem.SelectedItems[0].SubItems[1].Text);
-                    dao.excluirCliente(id);
-                    listagem.Items.RemoveAt(listagem.SelectedIndices[0]);
+            int contador = listagem.Items.Count;
+            if (contador > 0) {
+                DialogResult dr = MessageBox.Show("Você tem certeza que deseja excluir o registro selecionado?", "Confirmação: Excluir cliente?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                MessageBox.Show("Registro excluido com sucesso!");
-                }
-                catch (Exception ex)
+                if (dr == DialogResult.Yes)
                 {
-                    MessageBox.Show("Ocorreu um erro: " + ex);
-                }
+                    try
+                    {
+                        int id = Convert.ToInt32(listagem.SelectedItems[0].SubItems[1].Text);
+                        dao.excluirCliente(id);
+                        listagem.Items.RemoveAt(listagem.SelectedIndices[0]);
 
+                        MessageBox.Show("Registro excluido com sucesso!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ocorreu um erro: " + ex);
+                    }
+                }
+                else if (dr == DialogResult.Cancel)
+                {
+
+                }
+            } else
+            {
+                MessageBox.Show("Você não possui clientes cadastrados!");
+            }
+           
+           
             
         }
     }

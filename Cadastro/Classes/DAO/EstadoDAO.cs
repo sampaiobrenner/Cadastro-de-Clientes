@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,9 +16,16 @@ namespace Cadastro
             contexto = new EntidadeContext();
         }
 
-        public String obterEstado (EstadoDAO estado)
+        public String obterEstado (int id)
         {
-            return "";
+            
+            var busca = from e in contexto.Estados
+                        where e.id == id
+                        select e.sigla;
+
+            //var estado = contexto.Estados.Include(c => c.cidades).FirstOrDefault(c => c.id == id);
+            String sigla = busca.FirstOrDefault();
+            return sigla;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Cadastro
                         rgIe = txtBoxRG_IE.Text,
                         cpfCnpj = txtBoxCPF_CNPJ.Text,
                         email = txtBoxEmail.Text,
-                        cidadeid = 3,
+                        cidadeid = 4,
                         telefonePrincipal = txtBoxTelefonePrincipal.Text,
                         telefoneSecundario = txtBoxTelefoneSecundario.Text,
                         cep = txtBoxCEP.Text,
@@ -93,13 +93,13 @@ namespace Cadastro
                 txtBoxDataNascimento.Focus();
                 return false;
             } else
-            /*if (txtBoxCPF_CNPJ.Text.Trim().Equals("___,___,___-__") || txtBoxCPF_CNPJ.Text.Trim().Equals("__,___,___/____-__"))
+            if (txtBoxCPF_CNPJ.Text.Trim().Equals("___,___,___-__") || txtBoxCPF_CNPJ.Text.Trim().Equals("__,___,___/____-__"))
             {
                 MessageBox.Show("Campo 'CPF/CNPJ' de preenchimento obrigatório!");
                 txtBoxCPF_CNPJ.Focus();
                 return false;
             }
-            else*/
+            else
             {
                 return true;
             }
@@ -113,7 +113,7 @@ namespace Cadastro
                 IList<Cidade> resultado = cidades.obterCidades();
                 foreach (var c in resultado)
                 {
-                    comboBoxCidades.Items.Add(c.nome);
+                    comboBoxCidades.Items.Add(c.nome + " - " + c.estado.sigla);
                 }
             } catch (Exception ex)
             {
@@ -125,23 +125,22 @@ namespace Cadastro
 
         private void comboBoxCidades_SelectedValueChanged(object sender, EventArgs e)
         {
-          
+
+            int indice = comboBoxCidades.SelectedIndex + 1;
+            EstadoDAO dao = new EstadoDAO();
+            txtBoxUf.Text = dao.obterEstado(indice);
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                //Esconda o formulario atual
                 this.Hide();
-                // Crie apenas o segundo form
                 FormListagemClientes listagem = new FormListagemClientes();
-                //Mostre o segundo form
                 listagem.ShowDialog();
             }
             finally
             {
-                // ao fechar, mostre novamente o inicial, ou feche this.Close();
                 this.Show();
             }
             
