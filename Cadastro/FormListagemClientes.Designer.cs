@@ -50,21 +50,21 @@
             // 
             // buttonExluirCliente
             // 
-            this.buttonExluirCliente.Location = new System.Drawing.Point(403, 379);
+            this.buttonExluirCliente.Location = new System.Drawing.Point(368, 379);
             this.buttonExluirCliente.Name = "buttonExluirCliente";
-            this.buttonExluirCliente.Size = new System.Drawing.Size(75, 23);
+            this.buttonExluirCliente.Size = new System.Drawing.Size(91, 23);
             this.buttonExluirCliente.TabIndex = 0;
-            this.buttonExluirCliente.Text = "Excluir";
+            this.buttonExluirCliente.Text = "Excluir [Del]";
             this.buttonExluirCliente.UseVisualStyleBackColor = true;
             this.buttonExluirCliente.Click += new System.EventHandler(this.buttonExluirCliente_Click);
             // 
             // buttonFechar
             // 
-            this.buttonFechar.Location = new System.Drawing.Point(494, 379);
+            this.buttonFechar.Location = new System.Drawing.Point(465, 379);
             this.buttonFechar.Name = "buttonFechar";
-            this.buttonFechar.Size = new System.Drawing.Size(75, 23);
+            this.buttonFechar.Size = new System.Drawing.Size(104, 23);
             this.buttonFechar.TabIndex = 1;
-            this.buttonFechar.Text = "Fechar";
+            this.buttonFechar.Text = "Fechar [Esc]";
             this.buttonFechar.UseVisualStyleBackColor = true;
             this.buttonFechar.Click += new System.EventHandler(this.buttonFechar_Click);
             // 
@@ -89,10 +89,12 @@
             this.Controls.Add(this.listagem);
             this.Controls.Add(this.buttonFechar);
             this.Controls.Add(this.buttonExluirCliente);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FormListagemClientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listagem de Clientes";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormListagemClientes_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);

@@ -154,5 +154,16 @@ namespace Cadastro
             }
             
         }
+
+        private void FormCadastroClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Enter:
+                    btnCadastrarCliente_Click(sender, e);
+                    break;
+              
+            }
+        }
     }
 }

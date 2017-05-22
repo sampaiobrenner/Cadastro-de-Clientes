@@ -113,5 +113,18 @@ namespace Cadastro
             } 
   
         }
+
+        private void FormListagemClientes_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Delete:
+                    buttonExluirCliente_Click(sender, e);
+                    break;
+                case Keys.Escape:
+                    buttonFechar_Click(sender, e);
+                    break;
+            }
+        }
     }
 }

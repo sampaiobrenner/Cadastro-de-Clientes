@@ -65,9 +65,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.listagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.panelPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -305,11 +307,11 @@
             // btnCadastrarCliente
             // 
             this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarCliente.Location = new System.Drawing.Point(235, 140);
+            this.btnCadastrarCliente.Location = new System.Drawing.Point(221, 140);
             this.btnCadastrarCliente.Name = "btnCadastrarCliente";
-            this.btnCadastrarCliente.Size = new System.Drawing.Size(110, 27);
+            this.btnCadastrarCliente.Size = new System.Drawing.Size(136, 27);
             this.btnCadastrarCliente.TabIndex = 6;
-            this.btnCadastrarCliente.Text = "Cadastrar";
+            this.btnCadastrarCliente.Text = "Cadastrar [Enter]";
             this.btnCadastrarCliente.UseVisualStyleBackColor = true;
             this.btnCadastrarCliente.Click += new System.EventHandler(this.btnCadastrarCliente_Click);
             // 
@@ -451,6 +453,11 @@
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
+            // fileSystemWatcher1
+            // 
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
             // FormCadastroClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -459,18 +466,21 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelPrincipal);
             this.Controls.Add(this.menuStrip1);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FormCadastroClientes";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Cliente";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormCadastroClientes_KeyDown);
             this.panelPrincipal.ResumeLayout(false);
             this.panelPrincipal.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,6 +524,7 @@
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.TextBox txtBoxBairro;
         private System.Windows.Forms.Label labelBairro;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
     }
 }
 
