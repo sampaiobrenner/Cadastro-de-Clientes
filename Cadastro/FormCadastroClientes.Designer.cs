@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblNomeCompleto = new System.Windows.Forms.Label();
             this.txtBoxNome = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblDataNascimento = new System.Windows.Forms.Label();
             this.lblPessoa = new System.Windows.Forms.Label();
             this.lblRG_IE = new System.Windows.Forms.Label();
             this.txtBoxRG_IE = new System.Windows.Forms.TextBox();
@@ -72,15 +72,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
+            // lblNomeCompleto
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Nome Completo";
+            this.lblNomeCompleto.AutoSize = true;
+            this.lblNomeCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomeCompleto.Location = new System.Drawing.Point(3, 37);
+            this.lblNomeCompleto.Name = "lblNomeCompleto";
+            this.lblNomeCompleto.Size = new System.Drawing.Size(95, 13);
+            this.lblNomeCompleto.TabIndex = 0;
+            this.lblNomeCompleto.Text = "Nome Completo";
             // 
             // txtBoxNome
             // 
@@ -90,15 +90,15 @@
             this.txtBoxNome.TabIndex = 1;
             this.txtBoxNome.Text = "Matheus Sampaio";
             // 
-            // label3
+            // lblDataNascimento
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(3, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Data Nascimento";
+            this.lblDataNascimento.AutoSize = true;
+            this.lblDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDataNascimento.Location = new System.Drawing.Point(3, 66);
+            this.lblDataNascimento.Name = "lblDataNascimento";
+            this.lblDataNascimento.Size = new System.Drawing.Size(104, 13);
+            this.lblDataNascimento.TabIndex = 0;
+            this.lblDataNascimento.Text = "Data Nascimento";
             // 
             // lblPessoa
             // 
@@ -172,9 +172,9 @@
             this.panelPrincipal.Controls.Add(this.lblRG_IE);
             this.panelPrincipal.Controls.Add(this.txtBoxTelefonePrincipal);
             this.panelPrincipal.Controls.Add(this.txtBoxRG_IE);
-            this.panelPrincipal.Controls.Add(this.label3);
+            this.panelPrincipal.Controls.Add(this.lblDataNascimento);
             this.panelPrincipal.Controls.Add(this.txtBoxEmail);
-            this.panelPrincipal.Controls.Add(this.label2);
+            this.panelPrincipal.Controls.Add(this.lblNomeCompleto);
             this.panelPrincipal.Controls.Add(this.txtBoxCPF_CNPJ);
             this.panelPrincipal.Controls.Add(this.txtBoxNome);
             this.panelPrincipal.Location = new System.Drawing.Point(12, 41);
@@ -487,9 +487,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNomeCompleto;
         private System.Windows.Forms.TextBox txtBoxNome;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDataNascimento;
         private System.Windows.Forms.Label lblPessoa;
         private System.Windows.Forms.Label lblRG_IE;
         private System.Windows.Forms.TextBox txtBoxRG_IE;
