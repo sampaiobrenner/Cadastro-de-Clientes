@@ -54,5 +54,14 @@ namespace Cadastro
             return resultado;
         }
 
+        public IList<Cliente> obterClientes(String cliente)
+        {
+            var busca = from c in contexto.Clientes.Include(c => c.Cidade)
+                        where c.Nome.Contains(cliente)
+                        select c;
+            IList<Cliente> resultado = busca.ToList();
+            return resultado;
+        }
+
     }
 }

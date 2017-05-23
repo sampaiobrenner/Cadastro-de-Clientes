@@ -19,17 +19,54 @@ namespace Cadastro
         {
             InitializeComponent();
             dao = new ClienteDAO();
-            carregaClientes();
+            criarLista();
         }
-      
+
+        public void criarLista()
+        {
+
+            listagem.Columns.Add("Id", 30, HorizontalAlignment.Left);
+            listagem.Columns.Add("Tipo de Pessoa", 90, HorizontalAlignment.Left);
+            listagem.Columns.Add("Nome Completo", 180, HorizontalAlignment.Left);
+            listagem.Columns.Add("Data de Nascimento", 130, HorizontalAlignment.Left);
+            listagem.Columns.Add("RG/IE", 100, HorizontalAlignment.Left);
+            listagem.Columns.Add("CPF/CNPJ", 100, HorizontalAlignment.Left);
+            listagem.Columns.Add("E-mail", 240, HorizontalAlignment.Left);
+            listagem.Columns.Add("Telefone Principal", 120, HorizontalAlignment.Left);
+            listagem.Columns.Add("Telefone Secundário", 120, HorizontalAlignment.Left);
+            listagem.Columns.Add("Cidade", 100, HorizontalAlignment.Left);
+            listagem.Columns.Add("CEP", 100, HorizontalAlignment.Left);
+            listagem.Columns.Add("Logradouro", 200, HorizontalAlignment.Left);
+            listagem.Columns.Add("Número", 100, HorizontalAlignment.Left);
+            listagem.Columns.Add("Complemento", 150, HorizontalAlignment.Left);
+            listagem.Columns.Add("Bairro", 150, HorizontalAlignment.Left);
+
+            this.Controls.Add(listagem);
+        }
+
         public void carregaClientes()
         {
             try
             {
-                IList<Cliente> resultado = dao.obterClientes();
+                String busca = txtBoxBuscaCliente.Text;
+
+                IList<Cliente> resultado;
+
+                if (busca == "")
+                {
+                   resultado = dao.obterClientes();
+                }
+                else
+                {
+                    resultado = dao.obterClientes(busca);
+                }
+
+                listagem.Items.Clear();
+
                 foreach (var c in resultado)
                 {
                     ListViewItem item = new ListViewItem(Convert.ToString(c.Id));
+
                     item.SubItems.Add(c.TipoPessoa);
                     item.SubItems.Add(c.Nome);
                     item.SubItems.Add(c.DataNascimento.ToString("dd/MM/yyyy"));
@@ -48,24 +85,6 @@ namespace Cadastro
                     listagem.Items.AddRange(new ListViewItem[] { item });
                 }
 
-                listagem.Columns.Add("Id", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Tipo de Pessoa", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Nome Completo", 200, HorizontalAlignment.Left);
-                listagem.Columns.Add("Data de Nascimento", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("RG/IE", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("CPF/CNPJ", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("E-mail", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Telefone Principal", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Telefone Secundário", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Cidade", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("CEP", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Logradouro", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Número", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Complemento", -2, HorizontalAlignment.Left);
-                listagem.Columns.Add("Bairro", -2, HorizontalAlignment.Left);
-
-                this.Controls.Add(listagem);
-
             }
             catch (Exception ex)
             {
@@ -73,6 +92,8 @@ namespace Cadastro
             }
 
         }
+
+        
 
         private void buttonFechar_Click(object sender, EventArgs e)
         {
@@ -124,6 +145,24 @@ namespace Cadastro
                 case Keys.Escape:
                     buttonFechar_Click(sender, e);
                     break;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                carregaClientes();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                FormCadastroClientes formCadastroClientes = new FormCadastroClientes();
+                formCadastroClientes.ShowDialog();
+            }
+            finally
+            {
+                this.Show();
             }
         }
     }

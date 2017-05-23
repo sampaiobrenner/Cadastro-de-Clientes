@@ -46,6 +46,7 @@
             this.txtBoxEmail = new System.Windows.Forms.MaskedTextBox();
             this.txtBoxCPF_CNPJ = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtBoxBairro = new System.Windows.Forms.TextBox();
             this.labelBairro = new System.Windows.Forms.Label();
             this.comboBoxCidades = new System.Windows.Forms.ComboBox();
@@ -62,13 +63,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.listagemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.panelPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,7 +174,7 @@
             this.panelPrincipal.Controls.Add(this.lblNomeCompleto);
             this.panelPrincipal.Controls.Add(this.txtBoxCPF_CNPJ);
             this.panelPrincipal.Controls.Add(this.txtBoxNome);
-            this.panelPrincipal.Location = new System.Drawing.Point(12, 41);
+            this.panelPrincipal.Location = new System.Drawing.Point(12, 22);
             this.panelPrincipal.Name = "panelPrincipal";
             this.panelPrincipal.Size = new System.Drawing.Size(575, 179);
             this.panelPrincipal.TabIndex = 0;
@@ -254,6 +251,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.txtBoxBairro);
             this.panel1.Controls.Add(this.labelBairro);
             this.panel1.Controls.Add(this.comboBoxCidades);
@@ -270,10 +268,21 @@
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Location = new System.Drawing.Point(12, 228);
+            this.panel1.Location = new System.Drawing.Point(12, 218);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(575, 174);
+            this.panel1.Size = new System.Drawing.Size(575, 189);
             this.panel1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(141, 149);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 27);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Limpar [Ctrl + Del]";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtBoxBairro
             // 
@@ -307,7 +316,7 @@
             // btnCadastrarCliente
             // 
             this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarCliente.Location = new System.Drawing.Point(221, 140);
+            this.btnCadastrarCliente.Location = new System.Drawing.Point(294, 149);
             this.btnCadastrarCliente.Name = "btnCadastrarCliente";
             this.btnCadastrarCliente.Size = new System.Drawing.Size(136, 27);
             this.btnCadastrarCliente.TabIndex = 6;
@@ -428,31 +437,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Endereço";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listagemToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(604, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // listagemToolStripMenuItem
-            // 
-            this.listagemToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.clientesToolStripMenuItem});
-            this.listagemToolStripMenuItem.Name = "listagemToolStripMenuItem";
-            this.listagemToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.listagemToolStripMenuItem.Text = "Listagem";
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
-            // 
             // fileSystemWatcher1
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
@@ -465,9 +449,7 @@
             this.ClientSize = new System.Drawing.Size(604, 414);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelPrincipal);
-            this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "FormCadastroClientes";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -478,11 +460,8 @@
             this.panelPrincipal.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -519,12 +498,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MaskedTextBox txtBoxDataNascimento;
         private System.Windows.Forms.ComboBox comboBoxCidades;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem listagemToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.TextBox txtBoxBairro;
         private System.Windows.Forms.Label labelBairro;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
