@@ -27,20 +27,14 @@ namespace Cadastro
             if (itemPessoa == "Juridica")
             {
                 txtBoxCPF_CNPJ.Mask = "00.000.000/0000-00";
-                txtBoxCPF_CNPJ.Text = "";
-                txtBoxRG_IE.Text = "";
                 lblPessoa.Text = "CNPJ";
                 lblRG_IE.Text = "IE";
-                lblNomeCompleto.Text = "Razão Social";
             }
             else
             {
                 txtBoxCPF_CNPJ.Mask = "000.000.000-00";
-                txtBoxCPF_CNPJ.Text = "";
-                txtBoxRG_IE.Text = "";
                 lblPessoa.Text = "CPF";
                 lblRG_IE.Text = "RG";
-                lblNomeCompleto.Text = "Nome Completo";
             }
 
         }    
