@@ -46,7 +46,7 @@
             this.txtBoxEmail = new System.Windows.Forms.MaskedTextBox();
             this.txtBoxCPF_CNPJ = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
             this.txtBoxBairro = new System.Windows.Forms.TextBox();
             this.labelBairro = new System.Windows.Forms.Label();
             this.comboBoxCidades = new System.Windows.Forms.ComboBox();
@@ -64,6 +64,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
+            this.btnFechar = new System.Windows.Forms.Button();
             this.panelPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
@@ -101,7 +102,7 @@
             // 
             this.lblPessoa.AutoSize = true;
             this.lblPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPessoa.Location = new System.Drawing.Point(327, 89);
+            this.lblPessoa.Location = new System.Drawing.Point(402, 88);
             this.lblPessoa.Name = "lblPessoa";
             this.lblPessoa.Size = new System.Drawing.Size(30, 13);
             this.lblPessoa.TabIndex = 0;
@@ -121,7 +122,7 @@
             // 
             this.txtBoxRG_IE.Location = new System.Drawing.Point(125, 85);
             this.txtBoxRG_IE.Name = "txtBoxRG_IE";
-            this.txtBoxRG_IE.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxRG_IE.Size = new System.Drawing.Size(110, 20);
             this.txtBoxRG_IE.TabIndex = 3;
             this.txtBoxRG_IE.Text = "3078970765";
             // 
@@ -149,7 +150,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(257, 142);
+            this.label8.Location = new System.Drawing.Point(307, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(125, 13);
             this.label8.TabIndex = 0;
@@ -184,7 +185,7 @@
             this.txtBoxDataNascimento.Location = new System.Drawing.Point(124, 59);
             this.txtBoxDataNascimento.Mask = "00/00/0000";
             this.txtBoxDataNascimento.Name = "txtBoxDataNascimento";
-            this.txtBoxDataNascimento.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxDataNascimento.Size = new System.Drawing.Size(110, 20);
             this.txtBoxDataNascimento.TabIndex = 2;
             this.txtBoxDataNascimento.Text = "24011994";
             this.txtBoxDataNascimento.ValidatingType = typeof(System.DateTime);
@@ -214,10 +215,10 @@
             // 
             // txtBoxTelefoneSecundario
             // 
-            this.txtBoxTelefoneSecundario.Location = new System.Drawing.Point(388, 140);
+            this.txtBoxTelefoneSecundario.Location = new System.Drawing.Point(443, 140);
             this.txtBoxTelefoneSecundario.Mask = "(99) 0000-0000";
             this.txtBoxTelefoneSecundario.Name = "txtBoxTelefoneSecundario";
-            this.txtBoxTelefoneSecundario.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxTelefoneSecundario.Size = new System.Drawing.Size(110, 20);
             this.txtBoxTelefoneSecundario.TabIndex = 7;
             this.txtBoxTelefoneSecundario.Text = "5381325477";
             // 
@@ -226,7 +227,7 @@
             this.txtBoxTelefonePrincipal.Location = new System.Drawing.Point(125, 139);
             this.txtBoxTelefonePrincipal.Mask = "(99) 0000-0000";
             this.txtBoxTelefonePrincipal.Name = "txtBoxTelefonePrincipal";
-            this.txtBoxTelefonePrincipal.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxTelefonePrincipal.Size = new System.Drawing.Size(110, 20);
             this.txtBoxTelefonePrincipal.TabIndex = 6;
             this.txtBoxTelefonePrincipal.Text = "5384033566";
             // 
@@ -234,16 +235,16 @@
             // 
             this.txtBoxEmail.Location = new System.Drawing.Point(124, 112);
             this.txtBoxEmail.Name = "txtBoxEmail";
-            this.txtBoxEmail.Size = new System.Drawing.Size(364, 20);
+            this.txtBoxEmail.Size = new System.Drawing.Size(430, 20);
             this.txtBoxEmail.TabIndex = 5;
             this.txtBoxEmail.Text = "sampaio.brenner@gmail.com";
             // 
             // txtBoxCPF_CNPJ
             // 
-            this.txtBoxCPF_CNPJ.Location = new System.Drawing.Point(370, 86);
+            this.txtBoxCPF_CNPJ.Location = new System.Drawing.Point(443, 85);
             this.txtBoxCPF_CNPJ.Mask = "000.000.000-00";
             this.txtBoxCPF_CNPJ.Name = "txtBoxCPF_CNPJ";
-            this.txtBoxCPF_CNPJ.Size = new System.Drawing.Size(118, 20);
+            this.txtBoxCPF_CNPJ.Size = new System.Drawing.Size(110, 20);
             this.txtBoxCPF_CNPJ.TabIndex = 4;
             this.txtBoxCPF_CNPJ.Text = "02945989018";
             this.txtBoxCPF_CNPJ.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
@@ -251,7 +252,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnFechar);
+            this.panel1.Controls.Add(this.btnLimpar);
             this.panel1.Controls.Add(this.txtBoxBairro);
             this.panel1.Controls.Add(this.labelBairro);
             this.panel1.Controls.Add(this.comboBoxCidades);
@@ -273,16 +275,16 @@
             this.panel1.Size = new System.Drawing.Size(575, 189);
             this.panel1.TabIndex = 1;
             // 
-            // button1
+            // btnLimpar
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(141, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 27);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Limpar [Ctrl + Del]";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpar.Location = new System.Drawing.Point(324, 159);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(111, 23);
+            this.btnLimpar.TabIndex = 9;
+            this.btnLimpar.Text = "Limpar [Ctrl + Del]";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimparCampos);
             // 
             // txtBoxBairro
             // 
@@ -315,10 +317,10 @@
             // 
             // btnCadastrarCliente
             // 
-            this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrarCliente.Location = new System.Drawing.Point(294, 149);
+            this.btnCadastrarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCadastrarCliente.Location = new System.Drawing.Point(441, 159);
             this.btnCadastrarCliente.Name = "btnCadastrarCliente";
-            this.btnCadastrarCliente.Size = new System.Drawing.Size(136, 27);
+            this.btnCadastrarCliente.Size = new System.Drawing.Size(113, 23);
             this.btnCadastrarCliente.TabIndex = 6;
             this.btnCadastrarCliente.Text = "Cadastrar [Enter]";
             this.btnCadastrarCliente.UseVisualStyleBackColor = true;
@@ -335,7 +337,7 @@
             // 
             // txtBoxComplemento
             // 
-            this.txtBoxComplemento.Location = new System.Drawing.Point(319, 78);
+            this.txtBoxComplemento.Location = new System.Drawing.Point(349, 79);
             this.txtBoxComplemento.Name = "txtBoxComplemento";
             this.txtBoxComplemento.Size = new System.Drawing.Size(205, 20);
             this.txtBoxComplemento.TabIndex = 5;
@@ -345,7 +347,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(232, 81);
+            this.label15.Location = new System.Drawing.Point(262, 82);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(82, 13);
             this.label15.TabIndex = 0;
@@ -371,7 +373,7 @@
             // 
             // txtBoxLogradouro
             // 
-            this.txtBoxLogradouro.Location = new System.Drawing.Point(319, 51);
+            this.txtBoxLogradouro.Location = new System.Drawing.Point(349, 52);
             this.txtBoxLogradouro.Name = "txtBoxLogradouro";
             this.txtBoxLogradouro.Size = new System.Drawing.Size(205, 20);
             this.txtBoxLogradouro.TabIndex = 3;
@@ -381,7 +383,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(243, 55);
+            this.label13.Location = new System.Drawing.Point(273, 56);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(71, 13);
             this.label13.TabIndex = 0;
@@ -399,7 +401,7 @@
             // 
             // txtBoxUf
             // 
-            this.txtBoxUf.Location = new System.Drawing.Point(319, 25);
+            this.txtBoxUf.Location = new System.Drawing.Point(349, 26);
             this.txtBoxUf.Name = "txtBoxUf";
             this.txtBoxUf.ReadOnly = true;
             this.txtBoxUf.Size = new System.Drawing.Size(39, 20);
@@ -411,7 +413,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(291, 29);
+            this.label11.Location = new System.Drawing.Point(321, 30);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(23, 13);
             this.label11.TabIndex = 0;
@@ -441,6 +443,16 @@
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Location = new System.Drawing.Point(7, 159);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(106, 23);
+            this.btnFechar.TabIndex = 10;
+            this.btnFechar.Text = "Fechar [Esc]";
+            this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // FormCadastroClientes
             // 
@@ -501,7 +513,8 @@
         private System.Windows.Forms.TextBox txtBoxBairro;
         private System.Windows.Forms.Label labelBairro;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Button btnFechar;
     }
 }
 

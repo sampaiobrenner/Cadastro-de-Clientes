@@ -20,6 +20,7 @@ namespace Cadastro
             InitializeComponent();
             dao = new ClienteDAO();
             criarLista();
+            txtBoxBuscaCliente.Focus();
         }
 
         public void criarLista()
@@ -97,7 +98,24 @@ namespace Cadastro
 
         private void buttonFechar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dr = MessageBox.Show("Você tem certeza que deseja fechar o programa?", "Confirmação: Fechar o sistema?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro: " + ex);
+                }
+            }
+            else if (dr == DialogResult.Cancel)
+            {
+
+            }
+            
         }
 
         private void buttonExluirCliente_Click(object sender, EventArgs e)
@@ -145,24 +163,32 @@ namespace Cadastro
                 case Keys.Escape:
                     buttonFechar_Click(sender, e);
                     break;
+                case Keys.Enter:
+                    btnPesquisarCliente(sender, e);
+                    break;
+                case Keys.F2:
+                    btnCadastrarCliente(sender, e);
+                    break;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnPesquisarCliente(object sender, EventArgs e)
         {
                 carregaClientes();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnCadastrarCliente(object sender, EventArgs e)
         {
             try
             {
+                this.Hide();
                 FormCadastroClientes formCadastroClientes = new FormCadastroClientes();
                 formCadastroClientes.ShowDialog();
             }
             finally
             {
                 this.Show();
+                carregaClientes();
             }
         }
     }

@@ -19,6 +19,7 @@ namespace Cadastro
         {
             InitializeComponent();
             carregarCidades();
+            
         }
 
         private void comboBoxPessoa_SelectedValueChanged(object sender, EventArgs e)
@@ -66,6 +67,7 @@ namespace Cadastro
                     dao.salvarCliente(cliente);
 
                     MessageBox.Show("Cadastro efetuado com sucesso!");
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
@@ -77,20 +79,19 @@ namespace Cadastro
 
         public bool validarCadastro ()
         {
-            if (txtBoxNome.Text.Trim().Equals(""))
+            if(comboBoxPessoa.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Campo 'Tipo de Pessoa' de preenchimento obrigatório!");
+                comboBoxPessoa.Focus();
+                return false;
+            }
+            else if (txtBoxNome.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Campo 'Nome' de preenchimento obrigatório!");
                 txtBoxNome.Focus();
                 return false;
-            } else
-             if (comboBoxCidades.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("Campo 'Cidade' de preenchimento obrigatório!");
-                comboBoxCidades.Focus();
-                return false;
             }
-            else
-            if (Regex.Replace(txtBoxDataNascimento.Text, "  /  /", "").Equals("") )
+            else if (Regex.Replace(txtBoxDataNascimento.Text, "  /  /", "").Equals(""))
             {
                 MessageBox.Show("Campo 'Data de Nascimento' de preenchimento obrigatório!");
                 txtBoxDataNascimento.Focus();
@@ -101,11 +102,17 @@ namespace Cadastro
                 MessageBox.Show("Insira uma data de nascimento válida!");
                 txtBoxDataNascimento.Focus();
                 return false;
-            } else
-            if (txtBoxCPF_CNPJ.Text.Trim().Equals("___,___,___-__") || txtBoxCPF_CNPJ.Text.Trim().Equals("__,___,___/____-__"))
+            }
+            else if (txtBoxCPF_CNPJ.Text.Trim().Equals("___,___,___-__") || txtBoxCPF_CNPJ.Text.Trim().Equals("__,___,___/____-__"))
             {
                 MessageBox.Show("Campo 'CPF/CNPJ' de preenchimento obrigatório!");
                 txtBoxCPF_CNPJ.Focus();
+                return false;
+            }
+            else if (comboBoxCidades.Text.Trim().Equals(""))
+            {
+                MessageBox.Show("Campo 'Cidade' de preenchimento obrigatório!");
+                comboBoxCidades.Focus();
                 return false;
             }
             else
@@ -162,7 +169,62 @@ namespace Cadastro
                 case Keys.Enter:
                     btnCadastrarCliente_Click(sender, e);
                     break;
-              
+                case Keys.Escape:
+                    btnFechar_Click(sender, e);
+                    break;
+            }
+
+            if (e.Control)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Delete:
+                        btnLimparCampos(sender, e);
+                        break;
+                }
+            }
+        }
+
+        private void btnLimparCampos(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Você tem certeza que limpar os campos?", "Confirmação: Limpar campos?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    Utils.ClearForm(this);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro: " + ex);
+                }
+            }
+            else if (dr == DialogResult.Cancel)
+            {
+
+            }
+            
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Você tem certeza que deseja sair sem gravar as alterações?", "Confirmação: Fechar cadastro de cliente?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocorreu um erro: " + ex);
+                }
+            }
+            else if (dr == DialogResult.Cancel)
+            {
+
             }
         }
     }
