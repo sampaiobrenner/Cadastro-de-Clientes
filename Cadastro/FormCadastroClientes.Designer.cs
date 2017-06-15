@@ -46,6 +46,7 @@
             this.txtBoxEmail = new System.Windows.Forms.MaskedTextBox();
             this.txtBoxCPF_CNPJ = new System.Windows.Forms.MaskedTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFechar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.txtBoxBairro = new System.Windows.Forms.TextBox();
             this.labelBairro = new System.Windows.Forms.Label();
@@ -64,7 +65,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.btnFechar = new System.Windows.Forms.Button();
             this.panelPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
@@ -275,6 +275,16 @@
             this.panel1.Size = new System.Drawing.Size(575, 189);
             this.panel1.TabIndex = 1;
             // 
+            // btnFechar
+            // 
+            this.btnFechar.Location = new System.Drawing.Point(7, 159);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(106, 23);
+            this.btnFechar.TabIndex = 10;
+            this.btnFechar.Text = "Fechar [Esc]";
+            this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
             // btnLimpar
             // 
             this.btnLimpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -306,6 +316,8 @@
             // 
             // comboBoxCidades
             // 
+            this.comboBoxCidades.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.comboBoxCidades.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxCidades.DisplayMember = "NomeCompleto";
             this.comboBoxCidades.FormattingEnabled = true;
             this.comboBoxCidades.Location = new System.Drawing.Point(69, 24);
@@ -443,16 +455,6 @@
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Location = new System.Drawing.Point(7, 159);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(106, 23);
-            this.btnFechar.TabIndex = 10;
-            this.btnFechar.Text = "Fechar [Esc]";
-            this.btnFechar.UseVisualStyleBackColor = true;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // FormCadastroClientes
             // 

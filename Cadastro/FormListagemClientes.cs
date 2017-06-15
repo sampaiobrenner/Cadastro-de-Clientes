@@ -18,9 +18,7 @@ namespace Cadastro
         public FormListagemClientes()
         {
             InitializeComponent();
-            dao = new ClienteDAO();
             criarLista();
-            txtBoxBuscaCliente.Focus();
         }
 
         public void criarLista()
@@ -45,22 +43,36 @@ namespace Cadastro
             this.Controls.Add(listagem);
         }
 
-        public void carregaClientes()
+        public void carregaClientes(bool todos)
         {
+
+            // todos = true
+            // ultimo registro = false
+            
+
             try
             {
                 String busca = txtBoxBuscaCliente.Text;
 
                 IList<Cliente> resultado;
 
-                if (busca == "")
+                if (todos == true)
                 {
-                   resultado = dao.obterClientes();
-                }
-                else
+                    dao = new ClienteDAO();
+                    if (busca == "")
+                    {
+                        resultado = dao.obterClientes();
+                    }
+                    else
+                    {
+                        resultado = dao.obterClientes(busca);
+                    }
+                } else
                 {
-                    resultado = dao.obterClientes(busca);
+                    dao = new ClienteDAO();
+                    resultado = dao.obterUltimoCliente();
                 }
+               
 
                 listagem.Items.Clear();
 
@@ -120,6 +132,8 @@ namespace Cadastro
 
         private void buttonExluirCliente_Click(object sender, EventArgs e)
         {
+            dao = new ClienteDAO();
+
             if (listagem.Items.Count == 0)
             {
                 MessageBox.Show("Você não possui clientes cadastrados!");
@@ -174,7 +188,7 @@ namespace Cadastro
 
         private void btnPesquisarCliente(object sender, EventArgs e)
         {
-                carregaClientes();
+                carregaClientes(true);
         }
 
         private void btnCadastrarCliente(object sender, EventArgs e)
@@ -188,8 +202,28 @@ namespace Cadastro
             finally
             {
                 this.Show();
-                carregaClientes();
+                carregaClientes(false);
             }
+        }
+
+        private void btnAlteraCliente(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(listagem.SelectedItems[0].SubItems[0].Text);
+            try
+            {
+                this.Hide();
+                dao = new ClienteDAO();
+                IList<Cliente> cliente = dao.buscarClientePorId(id);
+                Cliente cliente1 = cliente.First();
+                FormCadastroClientes formCadastroClientes = new FormCadastroClientes(cliente1);
+                formCadastroClientes.ShowDialog();
+            }
+            finally
+            {
+                this.Show();
+                carregaClientes(false);
+            }
+            
         }
     }
 }

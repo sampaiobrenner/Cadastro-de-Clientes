@@ -38,6 +38,7 @@
             this.txtBoxBuscaCliente = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cadastroDataSetBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -81,7 +82,7 @@
             this.listagem.Location = new System.Drawing.Point(12, 67);
             this.listagem.Name = "listagem";
             this.listagem.Size = new System.Drawing.Size(580, 295);
-            this.listagem.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listagem.Sorting = System.Windows.Forms.SortOrder.Descending;
             this.listagem.TabIndex = 1;
             this.listagem.UseCompatibleStateImageBehavior = false;
             this.listagem.View = System.Windows.Forms.View.Details;
@@ -122,11 +123,22 @@
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrarCliente);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(310, 379);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Alterar [F3]";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnAlteraCliente);
+            // 
             // FormListagemClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(604, 414);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnCadastrar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.listagem);
@@ -156,5 +168,6 @@
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.TextBox txtBoxBuscaCliente;
         private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.Button button1;
     }
 }

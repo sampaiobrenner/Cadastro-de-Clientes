@@ -14,13 +14,40 @@ namespace Cadastro
 {
     public partial class FormCadastroClientes : Form
     {
+        private bool alteracao;
+        int idCliente;
 
         public FormCadastroClientes()
         {
             InitializeComponent();
             carregarCidades();
-            
         }
+
+        public FormCadastroClientes(Cliente cliente)
+        {
+            InitializeComponent();
+            alteracao = true;
+            carregarCidades();
+
+            idCliente = cliente.Id;
+
+            comboBoxPessoa.Text = cliente.TipoPessoa;
+            txtBoxNome.Text = cliente.Nome;
+            txtBoxDataNascimento.Text = Convert.ToString(cliente.DataNascimento);
+            txtBoxRG_IE.Text = cliente.RgIe;
+            txtBoxCPF_CNPJ.Text = cliente.CpfCnpj;
+            txtBoxEmail.Text = cliente.Email;
+            comboBoxCidades.Text = cliente.Cidade.Nome;
+            txtBoxUf.Text = cliente.Cidade.Estado.Sigla;
+            txtBoxTelefonePrincipal.Text = cliente.TelefonePrincipal;
+            txtBoxTelefoneSecundario.Text = cliente.TelefoneSecundario;
+            txtBoxCEP.Text = cliente.Cep;
+            txtBoxLogradouro.Text = cliente.Logradouro;
+            txtBoxNumero.Text = cliente.Numero;
+            txtBoxComplemento.Text = cliente.Complemento;
+            txtBoxBairro.Text = cliente.Bairro;
+        }
+
 
         private void comboBoxPessoa_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -49,6 +76,7 @@ namespace Cadastro
                     ClienteDAO dao = new ClienteDAO();
                     Cliente cliente = new Cliente()
                     {
+                        Id = idCliente,
                         TipoPessoa = comboBoxPessoa.Text,
                         Nome = txtBoxNome.Text,
                         DataNascimento = Convert.ToDateTime(Regex.Replace(txtBoxDataNascimento.Text, "  /  /", "")),
@@ -64,9 +92,17 @@ namespace Cadastro
                         Complemento = txtBoxComplemento.Text,
                         Bairro = txtBoxBairro.Text
                     };
-                    dao.salvarCliente(cliente);
 
-                    MessageBox.Show("Cadastro efetuado com sucesso!");
+                    if(alteracao)
+                    {
+                        dao.alterarCliente(cliente);
+                        MessageBox.Show("Cadastro alterado com sucesso!");
+                    } else
+                    {
+                        dao.salvarCliente(cliente);
+                        MessageBox.Show("Cadastro efetuado com sucesso!");
+                    }
+                    
                     this.Close();
                 }
                 catch (Exception ex)
@@ -137,6 +173,26 @@ namespace Cadastro
             }
           
             
+        }
+
+        private void carregarCidades(String nome)
+        {
+            CidadeDAO cidades = new CidadeDAO();
+            try
+            {
+                IList<ItemDaComboBoxDeCidade> resultado = cidades.obterCidades(nome);
+                
+                foreach (var c in resultado)
+                {
+                    comboBoxCidades.Items.Add(c);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex);
+            }
+
+
         }
 
         private void comboBoxCidades_SelectedValueChanged(object sender, EventArgs e)

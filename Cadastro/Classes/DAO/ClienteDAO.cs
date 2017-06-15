@@ -33,23 +33,26 @@ namespace Cadastro
 
         public void alterarCliente (Cliente cliente)
         {
-            contexto.Clientes.Update(cliente);
+            Cliente alteracao = contexto.Clientes.First(c => c.Id == cliente.Id);
+            alteracao.Nome = cliente.Nome;
             contexto.SaveChanges();
         }
 
         public IList<Cliente> buscarClientePorId (int id)
         {
-            var busca = from c in contexto.Clientes
+            var busca = from c in contexto.Clientes.Include(c => c.Cidade).Include(e => e.Cidade.Estado)
                         where c.Id == id
                         select c;
+
             IList<Cliente> resultado = busca.ToList();
             return resultado;
         }
 
         public IList<Cliente> obterClientes()
         {
-            var busca = from c in contexto.Clientes.Include(c => c.Cidade)
-                        select c;
+            var busca = (from c in contexto.Clientes.Include(c => c.Cidade)
+                        orderby c.Id descending
+                        select c).Take(50);
             IList<Cliente> resultado = busca.ToList();
             return resultado;
         }
@@ -57,8 +60,18 @@ namespace Cadastro
         public IList<Cliente> obterClientes(String cliente)
         {
             var busca = from c in contexto.Clientes.Include(c => c.Cidade)
+                        orderby c.Id descending
                         where c.Nome.Contains(cliente)
                         select c;
+            IList<Cliente> resultado = busca.ToList();
+            return resultado;
+        }
+
+        public IList<Cliente> obterUltimoCliente()
+        {
+            var busca = (from c in contexto.Clientes.Include(c => c.Cidade).Include(e => e.Cidade.Estado)
+                         orderby c.Id descending
+                        select c).Take(1);
             IList<Cliente> resultado = busca.ToList();
             return resultado;
         }

@@ -40,5 +40,27 @@ namespace Cadastro
             return resultado;
         }
 
+        public IList<ItemDaComboBoxDeCidade> obterCidades(String nome)
+        {
+
+            var busca = (from c in contexto.Cidades.Include(e => e.Estado)
+                         where c.Nome.Contains(nome)
+                         orderby c.Nome
+                         select c).Take(10).ToList();
+
+            IList<ItemDaComboBoxDeCidade> resultado = new List<ItemDaComboBoxDeCidade>();
+
+            busca.ForEach(c =>
+            {
+                resultado.Add(new ItemDaComboBoxDeCidade()
+                {
+                    Id = c.Id,
+                    Nome = c.Nome,
+                    SiglaDaUf = c.Estado.Sigla
+                });
+            });
+
+            return resultado;
+        }
     }
 }
