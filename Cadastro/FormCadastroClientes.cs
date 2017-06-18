@@ -73,7 +73,10 @@ namespace Cadastro
             {
                 try
                 {
+
+
                     ClienteDAO dao = new ClienteDAO();
+
                     Cliente cliente = new Cliente()
                     {
                         Id = idCliente,

@@ -183,6 +183,9 @@ namespace Cadastro
                 case Keys.F2:
                     btnCadastrarCliente(sender, e);
                     break;
+                case Keys.F3:
+                    btnAlteraCliente(sender, e);
+                    break;
             }
         }
 
@@ -208,9 +211,11 @@ namespace Cadastro
 
         private void btnAlteraCliente(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(listagem.SelectedItems[0].SubItems[0].Text);
+            
             try
             {
+                int id = Convert.ToInt32(listagem.SelectedItems[0].SubItems[0].Text);
+
                 this.Hide();
                 dao = new ClienteDAO();
                 IList<Cliente> cliente = dao.buscarClientePorId(id);

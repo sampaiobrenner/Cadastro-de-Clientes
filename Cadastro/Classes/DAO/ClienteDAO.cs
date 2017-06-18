@@ -35,6 +35,15 @@ namespace Cadastro
         {
             Cliente alteracao = contexto.Clientes.First(c => c.Id == cliente.Id);
             alteracao.Nome = cliente.Nome;
+            alteracao.Numero = cliente.Numero;
+            alteracao.Logradouro = cliente.Logradouro;
+            alteracao.RgIe = cliente.RgIe;
+            alteracao.TelefonePrincipal = cliente.TelefonePrincipal;
+            alteracao.TipoPessoa = cliente.TipoPessoa;
+            alteracao.TelefoneSecundario = cliente.TelefoneSecundario;
+            alteracao.CidadeId = cliente.CidadeId;
+            alteracao.Email = cliente.Email;
+   
             contexto.SaveChanges();
         }
 
