@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Correios.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Correios.CEP.Net.1.1.6\lib\Correios.Net.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework.Commands, Version=7.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.Commands.7.0.0-rc1-final\lib\net451\EntityFramework.Commands.dll</HintPath>
       <Private>True</Private>
@@ -138,6 +141,7 @@
     <Compile Include="Classes\DAO\CidadeDAO.cs" />
     <Compile Include="Classes\DAO\EstadoDAO.cs" />
     <Compile Include="Classes\DTO\ItemDaComboBoxDeCidade.cs" />
+    <Compile Include="Classes\Outras\ConsultaCep.cs" />
     <Compile Include="EntidadeContext.cs" />
     <Compile Include="Classes\DAO\ClienteDAO.cs" />
     <Compile Include="Classes\Entities\Cidade.cs" />
